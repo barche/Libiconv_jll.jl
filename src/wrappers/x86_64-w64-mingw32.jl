@@ -5,6 +5,7 @@ export libiconv
 PATH = ""
 LIBPATH = ""
 LIBPATH_env = "PATH"
+LIBPATH_default = ""
 
 # Relative path to `libiconv`
 const libiconv_splitpath = ["bin", "libiconv-2.dll"]
@@ -28,7 +29,7 @@ function __init__()
 
     # Initialize PATH and LIBPATH environment variable listings
     global PATH_list, LIBPATH_list
-    # We first need to add to LIBPATH_list the libraries provided by Julia
+    # Lastly, we need to add to LIBPATH_list the libraries provided by Julia
     append!(LIBPATH_list, [Sys.BINDIR, joinpath(Sys.BINDIR, Base.LIBDIR, "julia"), joinpath(Sys.BINDIR, Base.LIBDIR)])
     global libiconv_path = normpath(joinpath(artifact_dir, libiconv_splitpath...))
 
